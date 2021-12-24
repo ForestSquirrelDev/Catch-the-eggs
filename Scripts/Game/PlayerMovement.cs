@@ -12,6 +12,7 @@ namespace Game {
                 TrySnapPosition(MovementPointsController.Directions.Right);
             }
         }
+        
         private void TrySnapPosition(MovementPointsController.Directions direction) {
             if (pointsController.Snap(direction, out Vector3 newPosition)) {
                 transform.position = newPosition;

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +12,7 @@ namespace Game {
         public void RestartGame() {
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
+            Time.timeScale = 1f;
         }
 
         private void OnEggFellDown() {

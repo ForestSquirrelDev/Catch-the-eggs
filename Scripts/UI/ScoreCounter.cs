@@ -1,4 +1,3 @@
-using System;
 using Game;
 using TMPro;
 using UnityEngine;
@@ -12,15 +11,19 @@ namespace InGameUI {
         private int totalScore;
 
         private void Awake() {
-            scoreText.text = totalScore.ToString();
+            SetScoreText();
         }
-
+        
         private void OnEnable() {
             eggCatcher.CaughtEgg += OnPlayerCaughtEgg;
         }
 
         private void OnPlayerCaughtEgg() {
             totalScore += scorePerEgg;
+            SetScoreText();
+        }
+        
+        private void SetScoreText() {
             scoreText.text = $"Score: {totalScore.ToString()}";
         }
     }

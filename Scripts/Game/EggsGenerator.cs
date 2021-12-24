@@ -5,12 +5,17 @@ using Random = UnityEngine.Random;
 
 namespace Game {
     public class EggsGenerator : MonoBehaviour {
+        [SerializeField] private PlayerEggCatcher eggCatcher;
         [SerializeField] private Vector2 spawnRange = Vector2.one;
         [SerializeField] private List<Transform> spawnPoints = new();
         [SerializeField] GameObject eggPrefab;
 
         private float counter;
 
+        private void OnEnable() {
+            eggCatcher.CaughtEgg += OnCaughtEgg;
+        }
+        
         private void Start() {
             SetRandomSpawnTime();
         }
@@ -21,6 +26,10 @@ namespace Game {
                 SpawnEgg();
                 SetRandomSpawnTime();
             }
+        }
+        
+        private void OnCaughtEgg() {
+            spawnRange.y = Mathf.Clamp(spawnRange.y -= Time.deltaTime, spawnRange.x, float.MaxValue);
         }
         
         private void SetRandomSpawnTime() {
