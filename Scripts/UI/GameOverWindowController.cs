@@ -1,4 +1,5 @@
-using Game;
+using Game.Environment;
+using Game.GameManagement;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,12 +15,18 @@ namespace InGameUI {
             ground.EggFellDown += OnEggFellDown;
         }
 
+        private void OnDestroy() {
+            ground.EggFellDown -= OnEggFellDown;
+        }
+
+        [UsedImplicitly]
+        public void Restart() {
+            sequenceController.RestartGame();
+        }
+
         private void OnEggFellDown() {
             background.gameObject.SetActive(true);
             popupWindow.gameObject.SetActive(true);
         }
-        
-        [UsedImplicitly]
-        public void Restart() => sequenceController.RestartGame();
     }
 }

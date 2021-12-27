@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Game {
+namespace Game.Eggs {
     public class EggsGenerator : MonoBehaviour {
         [SerializeField] private PlayerEggCatcher eggCatcher;
         [SerializeField] private Vector2 spawnRange = Vector2.one;
@@ -22,14 +21,17 @@ namespace Game {
         
         private void Update() {
             counter -= Time.deltaTime;
-            if (counter <= 0) {
-                SpawnEgg();
-                SetRandomSpawnTime();
-            }
+            if (!(counter <= 0)) return;
+            SpawnEgg();
+            SetRandomSpawnTime();
         }
-        
+
+        private void OnDestroy() {
+            eggCatcher.CaughtEgg -= OnCaughtEgg;
+        }
+
         private void OnCaughtEgg() {
-            spawnRange.y = Mathf.Clamp(spawnRange.y -= Time.deltaTime, spawnRange.x, float.MaxValue);
+            spawnRange.y = Mathf.Clamp(spawnRange.y - Time.deltaTime, spawnRange.x, float.MaxValue);
         }
         
         private void SetRandomSpawnTime() {

@@ -1,7 +1,8 @@
 using System;
+using Game.Eggs;
 using UnityEngine;
 
-namespace Game {
+namespace Game.Environment {
     public class GroundController : MonoBehaviour {
         public event Action EggFellDown;
         
