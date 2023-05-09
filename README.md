@@ -9,4 +9,4 @@ Timespan for this task was strictly 3 hours. Of which 1.5 hours i was looking fo
 Given all that, i believe the result to be pretty satisfying. And so did the reviewer at the time.
 Gameloop feels nice and non-bloated, and it actually plays like a proper game.
 
-You can try it yourself on itch: 
+You can download and try it yourself on itch: https://kikchitov.itch.io/catch-the-eggs
